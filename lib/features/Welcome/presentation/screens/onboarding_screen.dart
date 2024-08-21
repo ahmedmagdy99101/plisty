@@ -50,17 +50,17 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 if (_currentPage == index) {
                   return ShaderMask(
                     shaderCallback: (Rect bounds) {
-                      return LinearGradient(
+                      return const LinearGradient(
                         colors: [Color(0xFF00F7FF), Color(0xFF8727FF)],
                         begin: Alignment.centerLeft,
                         end: Alignment.centerRight,
                       ).createShader(bounds);
                     },
                     child: Container(
-                      margin: EdgeInsets.symmetric(horizontal: 5),
+                      margin: const EdgeInsets.symmetric(horizontal: 5),
                       width: 8,
                       height: 8,
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                         color: Colors.white,
                         shape: BoxShape.circle,
                       ),
@@ -68,7 +68,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   );
                 } else {
                   return Container(
-                    margin: EdgeInsets.symmetric(horizontal: 5),
+                    margin: const EdgeInsets.symmetric(horizontal: 5),
                     width: 8,
                     height: 8,
                     decoration: BoxDecoration(
@@ -105,14 +105,14 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
           children: [
             Text(
               title,
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 24,
                 fontWeight: FontWeight.bold,
                 color: Colors.white,
               ),
               textAlign: TextAlign.center,
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             Text(
               subtitle,
               style: TextStyle(
@@ -121,7 +121,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               ),
               textAlign: TextAlign.center,
             ),
-            SizedBox(height: 30),
+            const SizedBox(height: 30),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20.0),
               child: Container(
@@ -129,7 +129,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 height: 46,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(5),
-                  gradient: LinearGradient(
+                  gradient: const LinearGradient(
                     colors: [
                       Color(0xFF00F7FF), Color(0xFF8727FF )],
                     begin: Alignment.centerLeft,
@@ -151,7 +151,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                       borderRadius: BorderRadius.circular(20),
                     ),
                   ),
-                  child: Text(
+                  child: const Text(
                     'ابدأ الآن',
                     style: TextStyle(fontSize: 18,color: Colors.white),
                   ),
