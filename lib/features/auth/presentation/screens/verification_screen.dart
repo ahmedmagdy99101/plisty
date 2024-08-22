@@ -15,7 +15,7 @@ class VerificationScreen extends StatelessWidget {
       body: Stack(
         children: [
           Image.asset(
-            'assets/images/tst2.jpg',
+            'assets/images/login.png',
             fit: BoxFit.fill,
             height: double.infinity,
             width: double.infinity,
@@ -56,38 +56,41 @@ class VerificationScreen extends StatelessWidget {
                     ),
                   ),
                   32.verticalSpace,
-                  Pinput(
-                    closeKeyboardWhenCompleted: true,
-                    length: 4,
-                    onCompleted: (value) {
-                      // Handle OTP completion here
-                    },
-                    validator: (p0) {
-                      return p0!.isEmpty ? 'ادخل الكود رجاءا' : null;
-                    },
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    disabledPinTheme: PinTheme(
-                      height: 60.h,
-                      width: 75,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(12.r),
-                        color: Colors.white,
-                        border: Border.all(color: Colors.pink),
+                  Directionality(
+                    textDirection: TextDirection.ltr,
+                    child: Pinput(
+                      closeKeyboardWhenCompleted: true,
+                      length: 4,
+                      onCompleted: (value) {
+                        // Handle OTP completion here
+                      },
+                      validator: (p0) {
+                        return p0!.isEmpty ? 'ادخل الكود رجاءا' : null;
+                      },
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      disabledPinTheme: PinTheme(
+                        height: 60.h,
+                        width: 75,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(12.r),
+                          color: Colors.white,
+                          border: Border.all(color: Colors.pink),
+                        ),
                       ),
-                    ),
-                    defaultPinTheme: PinTheme(
-                      padding: EdgeInsets.all(8),
-                      height: 60.h,
-                      width: 75,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(12.r),
-                        color: Colors.black12,
-                        border: Border.all(color: Colors.white),
-                      ),
-                      textStyle: TextStyle(
-                        color:Colors.white,
-                        fontSize: 16.sp,
-                        fontWeight: FontWeight.w800,
+                      defaultPinTheme: PinTheme(
+                        padding: EdgeInsets.all(8),
+                        height: 60.h,
+                        width: 75,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(12.r),
+                          color: Colors.black12,
+                          border: Border.all(color: Colors.white),
+                        ),
+                        textStyle: TextStyle(
+                          color:Colors.white,
+                          fontSize: 16.sp,
+                          fontWeight: FontWeight.w800,
+                        ),
                       ),
                     ),
                   ),

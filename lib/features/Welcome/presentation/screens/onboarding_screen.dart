@@ -26,17 +26,17 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             },
             children: [
               buildOnboardingPage(
-                imagePath: 'assets/images/tst2.jpg',
+                imagePath: 'assets/images/onboarding_2.png',
                 title: 'استكشف ما يدهش في مدينتك',
                 subtitle: 'اكتشف أفضل الفعاليات والمهرجانات الموسيقية في مدينتك.',
               ),
               buildOnboardingPage(
-                imagePath: 'assets/images/tst2.jpg',
+                imagePath: 'assets/images/onboarding_4.png',
                 title: 'استمتع بالحفلات والأجواء المدهشة',
                 subtitle: 'تذوق تجربة لا تُنسى في أفضل الحفلات والمناسبات.',
               ),
               buildOnboardingPage(
-                imagePath: 'assets/images/tst2.jpg',
+                imagePath: 'assets/images/onboarding_3.png',
                 title: 'قم بزيارة أجمل الأماكن في العالم',
                 subtitle: 'استمتع بجولة حول أجمل الأماكن السياحية في العالم.',
               ),
@@ -72,7 +72,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     width: 8,
                     height: 8,
                     decoration: BoxDecoration(
-                      color: Colors.white.withOpacity(0.5),
+                      color: Colors.white,
                       shape: BoxShape.circle,
                     ),
                   );
@@ -95,7 +95,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
         image: DecorationImage(
           image: AssetImage(imagePath),
           fit: BoxFit.cover,
-          colorFilter: ColorFilter.mode(Colors.black.withOpacity(0.6), BlendMode.dstATop),
+        //  colorFilter: ColorFilter.mode(Colors.black.withOpacity(0.6), BlendMode.dstATop),
         ),
       ),
       child: Padding(

@@ -13,7 +13,7 @@ final GoRouter router = GoRouter(
   routes: [
     GoRoute(
       path: '/',
-      builder: (context, state) =>  SplashScreen(), // Todo SplashScreen
+      builder: (context, state) =>  HomeScreen(), // Todo SplashScreen
     ),
 
 
