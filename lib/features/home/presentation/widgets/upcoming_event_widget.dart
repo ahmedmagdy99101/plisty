@@ -97,6 +97,7 @@ class _UpcomingEventWidgetState extends State<UpcomingEventWidget> {
                 50.horizontalSpace,
                 Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
                     GestureDetector(
                       onTap: () {

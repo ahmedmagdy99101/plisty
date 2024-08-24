@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:go_router/go_router.dart';
 import 'package:plisty/features/home/presentation/widgets/event_widget.dart';
 import 'package:plisty/features/home/presentation/widgets/header_widget.dart';
 import 'package:plisty/features/home/presentation/widgets/image_slider.dart';
@@ -15,6 +17,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   int _selectedIndex = 0;
+  int _selectedIndex2 = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -30,13 +33,48 @@ class _HomeScreenState extends State<HomeScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const HeaderWidget(),
-                const SearchWidget(),
+                GestureDetector(
+                  onTap: (){
+                    GoRouter.of(context).push('/search');
+                  },
+                  child: Container(
+                    margin: EdgeInsets.only(left: 20),
+                    height: 45.h,
+                    width: 360,
+                    decoration: BoxDecoration(
+                      color: Color(0xFF4C4C4F),
+                      borderRadius: BorderRadius.circular(8),
+
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                              'بحث',
+                                style: TextStyle(
+                                    color:  Color(0xFF666666),
+                                    fontSize: 14.sp,
+                                    fontWeight: FontWeight.w400
+                                ),
+                          ),
+                          GestureDetector(
+                              onTap: (){
+
+                              },
+                              child: Icon(Icons.search_rounded,color: Color(0xFF666666),))
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
                 10.verticalSpace,
                 _buildCustomTabBar(),
                 16.verticalSpace,
                 ImageSlider(imagePaths: [
-                  'assets/images/onboarding_3.png',
-                  'assets/images/onboarding_3.png',
+                  'assets/images/Banner1.png',
+                  'assets/images/Banner2.png',
                 ]),
                 10.verticalSpace,
                 Padding(
@@ -52,12 +90,17 @@ class _HomeScreenState extends State<HomeScreen> {
                           color: Color(0xFFC1C1C1),
                         ),
                       ),
-                      Text(
-                        'عرض الخريطة',
-                        style: TextStyle(
-                          fontWeight: FontWeight.w600,
-                          fontSize: 12.sp,
-                          color: Color(0xFF00F7FF),
+                      GestureDetector(
+                        onTap: (){
+                          GoRouter.of(context).push('/nearby');
+                        },
+                        child: Text(
+                          'عرض الخريطة',
+                          style: TextStyle(
+                            fontWeight: FontWeight.w600,
+                            fontSize: 12.sp,
+                            color: Color(0xFF00F7FF),
+                          ),
                         ),
                       ),
                     ],
@@ -72,7 +115,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       itemCount: 3,
                       itemBuilder:(context,index){
                         return  EventWidget(
-                          imageUrl: 'assets/images/tst3.png',
+                          imageUrl: 'assets/images/Rectangle.png',
                           category: 'موسيقى',
                           title: 'حفل ديجي',
                           dateTime: '2 ديسمبر، 12:00 م',
@@ -116,7 +159,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       itemCount: 3,
                       itemBuilder:(context,index){
                         return  EventWidget(
-                          imageUrl: 'assets/images/login.png',
+                          imageUrl: 'assets/images/horse.png',
                           category: 'موسيقى',
                           title: 'حفل ديجي',
                           dateTime: '2 ديسمبر، 12:00 م',
@@ -140,12 +183,17 @@ class _HomeScreenState extends State<HomeScreen> {
                           color: Color(0xFFC1C1C1),
                         ),
                       ),
-                      Text(
-                        'عرض الكل',
-                        style: TextStyle(
-                          fontWeight: FontWeight.w600,
-                          fontSize: 12.sp,
-                          color: Color(0xFF00F7FF),
+                      GestureDetector(
+                        onTap: (){
+                          GoRouter.of(context).push('/upcoming');
+                        },
+                        child: Text(
+                          'عرض الكل',
+                          style: TextStyle(
+                            fontWeight: FontWeight.w600,
+                            fontSize: 12.sp,
+                            color: Color(0xFF00F7FF),
+                          ),
                         ),
                       ),
                     ],
@@ -156,25 +204,85 @@ class _HomeScreenState extends State<HomeScreen> {
                   width: 385.w,
                   child: ListView.builder(
                       scrollDirection: Axis.vertical,
-                      itemCount: 3,
+                      itemCount: 15,
                       itemBuilder: (context,index){
-                       return UpcomingEventWidget(
-                           imageUrl: 'assets/images/onboarding_3.png',
-                           category: 'موسيقى',
-                           title: 'حفلة مائية',
-                           dateTime: '02، ديسمبر، 12:00 م',
-                           location: 'دبي، برج خليفة',
-                       );
-                  }),
+                        return UpcomingEventWidget(
+                          imageUrl: 'assets/images/tst1.png',
+                          category: 'موسيقى',
+                          title: 'حفلة مائية',
+                          dateTime: '02، ديسمبر، 12:00 م',
+                          location: 'دبي، برج خليفة',
+                        );
+                      }),
                 )
               ],
             ),
           ),
         ),
+        bottomNavigationBar:BottomAppBar(
+          color: Color(0xFF1E1E1E),
+          shape: CircularNotchedRectangle(),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 30.0),
+            child: Container(
+              height: 60.h,
+              padding: EdgeInsets.symmetric(horizontal: 20.w),
+              decoration: BoxDecoration(
+                color: Color(0xFF3C3C43),
+                borderRadius: BorderRadius.circular(20),
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  _buildIcon(0,
+                      Icons.warehouse,
+                      'assets/icons/houseChimneyWindow.png'),
+                  _buildImageIcon(1, 'assets/icons/discover.png'),
+                  _buildImageIcon(2, 'assets/icons/discount-shape.png'),
+                  _buildImageIcon(3, 'assets/icons/ticket.png'),
+                  _buildImageIcon(4, 'assets/icons/user.png'),
+                ],
+              ),
+            ),
+          ),
+        ),
+
       ),
     );
   }
+  Widget _buildIcon(int index, IconData iconData, String assetPath) {
+    return Padding(
+      padding: EdgeInsets.all(0),
+      child: GestureDetector(
 
+        child: Icon(
+          Icons.warehouse_rounded,
+          color: _selectedIndex2 == index ? Color(0xFF00F7FF) : Colors.white,
+        ),
+
+      onTap: () {
+        setState(() {
+          _selectedIndex2 = index;
+        });
+      },
+      ),
+    );
+  }
+  Widget _buildImageIcon(int index, String assetPath) {
+    return GestureDetector(
+      onTap: () {
+        setState(() {
+          _selectedIndex2 = index;
+        });
+      },
+      child: Image.asset(
+        assetPath,
+        width: 24,
+        height: 24,
+        color: _selectedIndex2 == index ? Color(0xFF00F7FF) : Colors.white,
+      ),
+    );
+  }
   Widget _buildCustomTabBar() {
 
     return TabBar(
@@ -209,7 +317,6 @@ class _HomeScreenState extends State<HomeScreen> {
       ],
     );
   }
-
   Widget _buildTab(String text, double width, double height, int index) {
     final bool isSelected = _selectedIndex == index;
 

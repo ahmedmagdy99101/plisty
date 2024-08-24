@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 
 class HeaderWidget extends StatelessWidget {
   const HeaderWidget({Key? key}) : super(key: key);
@@ -49,7 +50,10 @@ class HeaderWidget extends StatelessWidget {
             ],
           ),
           Spacer(),
-          IconButton(onPressed: (){},
+          IconButton(onPressed: (){
+            GoRouter.of(context).push('/notifications');
+
+          },
 
               icon: Icon(Icons.notifications,color:  Color(0xFF00F7FF).withOpacity(0.8),size: 30,))
         ],

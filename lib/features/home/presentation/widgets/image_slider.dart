@@ -46,7 +46,7 @@ class _ImageSliderState extends State<ImageSlider> {
                       borderRadius: BorderRadius.circular(14.0),
                       image: DecorationImage(
                         image: AssetImage(path),
-                        fit: BoxFit.cover,
+                        fit: BoxFit.fill,
                       ),
                     ),
                   );

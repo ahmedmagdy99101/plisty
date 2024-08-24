@@ -1,33 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class EventWidget extends StatefulWidget {
+class CustomizedUpcomingWidget extends StatefulWidget {
+  const CustomizedUpcomingWidget({Key? key, required this.imageUrl, required this.category, required this.title, required this.dateTime, required this.location}) : super(key: key);
   final String imageUrl;
   final String category;
   final String title;
   final String dateTime;
   final String location;
 
-  EventWidget({
-    required this.imageUrl,
-    required this.category,
-    required this.title,
-    required this.dateTime,
-    required this.location,
-  });
-
   @override
-  _EventWidgetState createState() => _EventWidgetState();
+  State<CustomizedUpcomingWidget> createState() => _UpcomingEventWidgetState();
 }
 
-class _EventWidgetState extends State<EventWidget> {
+class _UpcomingEventWidgetState extends State<CustomizedUpcomingWidget> {
   bool _isFavorite = false;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.only(left: 16, top: 10, bottom: 10),
-      width: 250.w,
+      width: 385.w,
       decoration: BoxDecoration(
         color: const Color(0xFF1E1E1E),
         borderRadius: BorderRadius.circular(12),
@@ -39,13 +31,13 @@ class _EventWidgetState extends State<EventWidget> {
             children: [
               ClipRRect(
                 borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(12),
-                  topRight: Radius.circular(12),
+                  topLeft: Radius.circular(4),
+                  topRight: Radius.circular(4),
                 ),
                 child: Image.asset(
                   widget.imageUrl,
                   height: 150.h,
-                  width: 250.w,
+                  width: 385.w,
                   fit: BoxFit.cover,
                 ),
               ),
@@ -96,7 +88,7 @@ class _EventWidgetState extends State<EventWidget> {
             ],
           ),
           Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.symmetric(vertical: 8.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -107,24 +99,28 @@ class _EventWidgetState extends State<EventWidget> {
                       shaderCallback: (Rect bounds) {
                         return LinearGradient(
                           colors: [
-                            Color(0xFF00F7FF),
                             Color(0xFF8727FF),
+                            Color(0xFF9D44FD),
+
+                            Color(0xFF8727FF),
+                            Color(0xFF00F7FF),
                           ],
-                          begin: Alignment.topCenter,
-                          end: Alignment.bottomCenter,
+                          begin: Alignment.topLeft,
+                          end: Alignment.bottomRight,
                         ).createShader(bounds);
                       },
                       child: Text(
                         widget.title,
                         style: TextStyle(
                           color: Colors.white,
-                          fontSize: 16.sp,
+                          fontSize: 12.sp,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
                     ),
                     Container(
-                      padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                      width: 37.w,
+                      height: 20.h,
                       decoration: BoxDecoration(
                         gradient: LinearGradient(
                           colors: [
@@ -134,12 +130,14 @@ class _EventWidgetState extends State<EventWidget> {
                           begin: Alignment.topLeft,
                           end: Alignment.bottomRight,
                         ),
-                        borderRadius: BorderRadius.circular(8),
+                        borderRadius: BorderRadius.circular(4),
                       ),
                       child: Text(
+                        textAlign: TextAlign.center,
                         widget.category,
                         style: TextStyle(
                           color: Colors.white,
+                          fontWeight: FontWeight.w400,
                           fontSize: 12.sp,
                         ),
                       ),
@@ -148,33 +146,39 @@ class _EventWidgetState extends State<EventWidget> {
                 ),
                 10.verticalSpace,
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Image.asset('assets/icons/solar_calendar-linear.png'),
-                    5.horizontalSpace,
-                    Text(
-                      widget.dateTime,
-                      style: TextStyle(
-                        color: Color(0xFFEFEFEF),
-                        fontSize: 12.sp,
-                      ),
+                    Row(
+                      children: [
+                        Image.asset('assets/icons/ion_location-sharp.png'),
+                        5.horizontalSpace,
+                        Text(
+                          widget.location,
+                          style: TextStyle(
+                            color: Color(0xFFEFEFEF),
+                            fontSize: 12.sp,
+                          ),
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ],
                     ),
+                    Row(
+                      children: [
+                        Image.asset('assets/icons/solar_calendar-linear.png'),
+                        5.horizontalSpace,
+                        Text(
+                          widget.dateTime,
+                          style: TextStyle(
+                            color: Color(0xFFEFEFEF),
+                            fontSize: 12.sp,
+                          ),
+                        ),
+                      ],
+                    ),
+
                   ],
                 ),
-                4.verticalSpace,
-                Row(
-                  children: [
-                    Image.asset('assets/icons/ion_location-sharp.png'),
-                    5.horizontalSpace,
-                    Text(
-                      widget.location,
-                      style: TextStyle(
-                        color: Color(0xFFEFEFEF),
-                        fontSize: 12.sp,
-                      ),
-                      overflow: TextOverflow.ellipsis,
-                    ),
-                  ],
-                ),
+
               ],
             ),
           ),
